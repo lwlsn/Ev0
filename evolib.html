@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Staatliches" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="style.css"/> 
+  <script src="evolib.js"></script>
+</head>
+
+<body>
+  
+  <h2>Evolutionary Synthesis with Evolib.js</h2>
+  <p> Mutate and multiply! </p>
+  
+  <button onclick="Evolib.play(0)">play 0</button>
+  <button onclick="Evolib.evolve([0], 0.1);Evolib.play(0)">mutate</button>
+  <button class = "small" onclick="addToGen(0)">Add</button>
+
+
+  <br>
+  <button onclick="Evolib.play(1)">play 1</button>
+  <button onclick="Evolib.evolve([1], 0.1);Evolib.play(0)">mutate</button>
+  <button class = "small" onclick="addToGen(1)">Add</button>
+
+  <br>
+  <button onclick="Evolib.play(2)">play 2</button>
+  <button onclick="Evolib.evolve([2], 0.1);Evolib.play(0)">mutate</button>
+  <button class = "small" onclick="addToGen(2)">Add</button>
+
+  <br>
+  <button onclick="Evolib.play(3)">play 3</button>
+  <button onclick="Evolib.evolve([3], 0.1);Evolib.play(0)">mutate</button>
+  <button class = "small" onclick="addToGen(3)">Add</button>
+
+  <br>
+  <button onclick="Evolib.play(4)">play 4</button>
+  <button onclick="Evolib.evolve([4], 0.1);Evolib.play(0)">mutate</button>
+  <button class = "small" onclick="addToGen(4)">Add</button>
+  
+<br>
+  <br>
+  <button onclick="Evolib.stop()">stop</button>
+  
+  <button onclick="Evolib.newPopulation(5, 30);  Evolib.play(0)">new sound</button>
+
+ <p id = "population-label">Evolving with:</p>
+  <button id = "evolve-button" style = "display:none;" onclick="evolve()">Evolve</button>
+  <p id = "new-pop-label" style = "display:none;">New Population Made!</p>
+  <br>
+
+<script language="javascript" type="text/javascript">
+  Evolib.newPopulation(5, 30);
+  toEvolve = [];
+  const addToGen = (sound)=> {
+    toEvolve.push(sound);
+    updateLabel();
+  }
+  
+  const updateLabel = ()=> {
+    let text = "Evolving with:"
+    toEvolve.forEach((ev)=> {
+      text = text + ev + ","
+    });
+    document.getElementById("population-label").innerHTML = text;
+    document.getElementById("evolve-button").style.display = toEvolve.length > 0 ? "inline" : "none"
+    document.getElementById("new-pop-label").style.display = toEvolve.length > 0 ? "none" : "inline"
+  }
+
+</script>
+</body>
+</html>
